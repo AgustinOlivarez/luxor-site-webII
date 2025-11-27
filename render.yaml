@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: PrimerParcial
+    name: SegundoParcial
     env: python
     buildCommand: "pip install -r requirements.txt && 
     python manage.py migrate && 
@@ -10,4 +10,4 @@ services:
       - key: DJANGO_SETTINGS_MODULE
         value: luxor_site.settings
       - key: DATABASE_URL
-        value: postgresql://proyectodjango_1bl8_user:1AaHG58RLs1FMAPlEMWCeg1OwaLdUP6x@dpg-d4d5k5idbo4c73dks6lg-a.oregon-postgres.render.com/proyectodjango_1bl8
+        value: postgresql://segundoparcial_uhrr_user:7xqI2Gm0eog1sogumljqWTd8aqgNs7DS@dpg-d4jpne2li9vc73da5kd0-a.oregon-postgres.render.com/segundoparcial_uhrr

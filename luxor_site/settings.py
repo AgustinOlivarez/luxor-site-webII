@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,9 @@ SECRET_KEY = 'django-insecure-xa+#h3q1tvw&ib^_ji3q5($3g2m+toovb018t+lg44xqq(vr1b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['test-vocacional-webii.onrender.com',
+                 '127.0.0.1',
+                 'localhost']
 
 
 # Application definition
@@ -82,14 +85,19 @@ WSGI_APPLICATION = 'luxor_site.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'SegundoParcial',
-        'USER': 'postgres',
-        'PASSWORD': 'Ave290601',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    #'default': {
+     #   'ENGINE': 'django.db.backends.postgresql',
+      #  'NAME': 'SegundoParcial',
+      #  'USER': 'postgres',
+       # 'PASSWORD': 'Ave290601',
+        #'HOST': 'localhost',
+        #'PORT': '5432',
+    #}
+    'default': dj_database_url.config(
+        default='postgresql://segundoparcial_uhrr_user:7xqI2Gm0eog1sogumljqWTd8aqgNs7DS@dpg-d4jpne2li9vc73da5kd0-a.oregon-postgres.render.com/segundoparcial_uhrr',
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
 
 
