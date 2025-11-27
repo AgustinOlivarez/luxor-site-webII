@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-xa+#h3q1tvw&ib^_ji3q5($3g2m+toovb018t+lg44xqq(vr1b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['test-vocacional-webii.onrender.com',
+ALLOWED_HOSTS = ['luxor-site-webii.onrender.com',
                  '127.0.0.1',
                  'localhost']
 
