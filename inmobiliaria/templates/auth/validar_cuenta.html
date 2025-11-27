@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'inmobiliaria/css/validar_cuenta.css' %}">
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'inmobiliaria/js/auth.js' %}"></script>
+{% endblock %}
+{% block content %}
+<div class="validacion-container">
+
+    <h2>Validación de Cuenta</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" class="validacion-form">
+        {% csrf_token %}
+        <label>Email registrado</label>
+        <input type="text" name="email">
+        <label>Código de validación</label>
+        <input type="text" name="codigo" required>
+
+        <button type="submit" class="validacion-btn">Validar</button>
+    </form>
+
+</div>
+{% endblock %}

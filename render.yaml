@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: PrimerParcial
+    env: python
+    buildCommand: "pip install -r requirements.txt && 
+    python manage.py migrate && 
+    python manage.py collectstatic --noinput"
+    startCommand: "gunicorn luxor_site.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: luxor_site.settings
+      - key: DATABASE_URL
+        value: postgresql://proyectodjango_1bl8_user:1AaHG58RLs1FMAPlEMWCeg1OwaLdUP6x@dpg-d4d5k5idbo4c73dks6lg-a.oregon-postgres.render.com/proyectodjango_1bl8

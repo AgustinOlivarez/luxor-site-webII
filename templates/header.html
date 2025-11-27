@@ -1,0 +1,17 @@
+{% load static %}
+<header class="mb-4 mx-3">
+  <nav class="nav-container">
+    <div class="logo">
+      <img src="{% static 'images/logo.png' %}" alt="Luxor Logo" />
+    </div>
+
+    <ul class="menu">
+      <li><a href="{% url 'index' %}">Inicio</a></li>
+      <li><a href="{% url 'propiedades' %}">Nuestras propiedades</a></li>
+      <li><a href="{% url 'contacto' %}">Contacto</a></li>
+        <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+    </ul>
+
+    <div class="spacer"></div>
+  </nav>
+</header>

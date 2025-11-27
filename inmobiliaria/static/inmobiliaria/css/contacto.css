@@ -1,0 +1,144 @@
+.form-container {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 40px;
+  background: var(--color-beige);
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+.contact-wrapper {
+  display: flex;
+  gap: 50px; /* espacio entre columnas */
+  flex-wrap: wrap; /* responsive */
+}
+.form-contacto {
+  flex: 1 1 500px; /* ocupa mínimo 500px, crece */
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--color-marron);
+  font-family: var(--font-titulos);
+}
+
+.form-contacto input,
+.form-contacto textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-container label{
+    font-family: var(--font-textos);
+    color: var(--color-marron);
+}
+
+.form-contacto input:focus,
+.form-contacto textarea:focus {
+  outline: none;
+  border-color: var(--color-marron);
+  box-shadow: 0 0 5px rgba(139,69,19,0.3);
+}
+
+.btn-hero {
+  display: block;
+  width: 100%;
+  background: var(--color-marron);
+  color: var(--color-blanco);
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+  background: #5C2F0C; /* marrón más oscuro */
+  transform: translateY(-2px);
+}
+
+.contact-info {
+  flex: 1 1 300px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 15px;
+}
+
+.contact-info h3 {
+    text-align: center;
+  margin-bottom: 15px;
+  color: var(--color-marron);
+  font-family: var(--font-titulos);
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+    font-family: var(--font-textos);
+  color: #444;
+}
+
+.contact-info p i {
+    color: var(--color-marron);
+}
+.social {
+    text-align: center;
+  margin-top: 20px;
+}
+
+.social a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social a i{
+color: var(--color-oscuro-marron);
+  margin-right: 10px;
+}
+
+.social img:hover {
+  transform: scale(1.1);
+}
+
+.alert {
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  font-family: var(--font-textos);
+  font-size: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  animation: fadeIn 0.4s ease;
+}
+
+/* Éxito */
+.alert.success {
+  background: var(--color-marron);
+  color: var(--color-blanco);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* Error */
+.alert.error {
+  background: #d88c6a; /* tono cálido que combina con marrón */
+  color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

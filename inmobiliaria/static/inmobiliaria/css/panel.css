@@ -1,0 +1,134 @@
+/* ======== CONTENEDOR GENERAL ======== */
+.panel-wrapper {
+    padding: 40px 5%;
+    font-family: var(--font-textos);
+    color: var(--color-negro);
+}
+
+/* ======== HEADER DEL PANEL ======== */
+.header-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-beige);
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 1px solid var(--gris-medio);
+    margin-bottom: 30px;
+}
+
+/* ======== BOTÓN DE CERRAR SESIÓN ======== */
+.logout-btn {
+    background: var(--color-marron);
+    color: var(--color-blanco);
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-textos);
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: var(--color-oscuro-marron);
+}
+
+/* ======== TÍTULOS ======== */
+h1, h2 {
+    font-family: var(--font-titulos);
+    color: var(--color-negro);
+    margin-bottom: 20px;
+}
+
+/* ======== RESUMEN ESTADÍSTICO ======== */
+.stats-box {
+    background: var(--color-gris-claro);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--gris-medio);
+    width: fit-content;
+    margin-bottom: 30px;
+}
+
+.stats-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stats-box li {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+/* ======== TABLA ======== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-blanco);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--gris-medio);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+table th {
+    background: var(--color-marron);
+    color: var(--color-blanco);
+    padding: 14px;
+    text-align: left;
+    font-family: var(--font-titulos);
+    font-size: 16px;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--gris-medio);
+    font-size: 15px;
+}
+
+table td a {
+    text-decoration: none;
+}
+
+table tr:hover {
+    background: var(--color-beige);
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Limitar ancho del mensaje */
+td:nth-child(5) {
+    max-width: 350px;
+    white-space: normal;
+}
+
+/* ======== ACCIONES ======== */
+.action-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    color: var(--color-blanco);
+    transition: 0.2s ease;
+    font-family: var(--font-textos);
+}
+
+.edit-btn {
+    background: var(--color-marron);
+}
+.edit-btn:hover {
+    background: var(--color-oscuro-marron);
+}
+
+.delete-btn {
+    background: #b8402e;
+}
+.delete-btn:hover {
+    background: #8a2d1f;
+}
+

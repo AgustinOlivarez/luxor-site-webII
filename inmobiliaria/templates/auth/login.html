@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'inmobiliaria/css/login.css' %}">
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'inmobiliaria/js/auth.js' %}"></script>
+{% endblock %}
+{% block content %}
+<div class="login-container">
+
+    <h2>Iniciar Sesión</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" class="login-form">
+        {% csrf_token %}
+
+        <label>Correo electrónico</label>
+        <input type="email" name="email" required>
+
+        <label>Contraseña</label>
+        <input type="password" name="password" required>
+
+        <button type="submit" class="btn-login">Ingresar</button>
+    </form>
+
+
+    <div class="login-links mt-4">
+        <a href="{% url 'registro' %}">¿No tenés cuenta? Registrate</a>
+    </div>
+
+</div>
+{% endblock %}

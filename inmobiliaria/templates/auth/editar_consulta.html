@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'inmobiliaria/css/editar_solicitud.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="panel-wrapper edit-container">
+
+    <h1 class="edit-title">Editar Consulta</h1>
+
+    <form method="POST" class="edit-form">
+        {% csrf_token %}
+
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" name="nombre" value="{{ consulta.nombre }}" required>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" value="{{ consulta.email }}" required>
+
+        <label for="asunto">Asunto</label>
+        <input id="asunto" type="text" name="asunto" value="{{ consulta.asunto }}" required>
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="4" required>{{ consulta.mensaje }}</textarea>
+
+        <label for="categoria">Categoría</label>
+        <select id="categoria" name="categoria">
+            <option value="Consulta Comercial" {% if consulta.categoria == "Consulta Comercial" %}selected{% endif %}>Consulta Comercial</option>
+            <option value="Consulta Técnica" {% if consulta.categoria == "Consulta Técnica" %}selected{% endif %}>Consulta Técnica</option>
+            <option value="Consulta de RRHH" {% if consulta.categoria == "Consulta de RRHH" %}selected{% endif %}>Consulta de RRHH</option>
+            <option value="Consulta General" {% if consulta.categoria == "Consulta General" %}selected{% endif %}>Consulta General</option>
+        </select>
+
+        <div class="edit-buttons">
+            <button type="submit" class="save-btn">Guardar</button>
+            <a href="{% url 'panel' %}" class="cancel-btn">Cancelar</a>
+        </div>
+    </form>
+
+</main>
+
+{% endblock %}

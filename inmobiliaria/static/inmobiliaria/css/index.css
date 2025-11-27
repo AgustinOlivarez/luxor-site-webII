@@ -1,0 +1,194 @@
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5% 7%;
+  background: var(--color-beige);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-radius: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.hero-text {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.hero-text h1 {
+  font-family: var(--font-titulos);
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: var(--color-negro);
+}
+
+.hero-text h1 span {
+  color: var(--color-marron);
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.hero-img {
+  flex: 1;
+  text-align: right;
+}
+
+.hero-img img {
+  max-width: 100%;
+  border-radius: 10px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* Valores Section */
+.valores {
+  padding: 60px 80px 0px 80px;
+  text-align: center;
+  background: #fff;
+}
+
+.valores h2 {
+  font-family: var(--font-titulos);
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: var(--color-negro);
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.valor{
+    height: fit-content;
+}
+.valor img {
+  width: 100%;
+    max-height: 400px ;
+  border-radius: 10px;
+  margin-bottom: 20px;
+    object-fit: fill;
+}
+
+.valor h3 {
+  font-family: var(--font-titulos);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--color-marron);
+}
+
+.valor p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* CTA Section */
+.cta {
+  position: relative;
+  color: var(--color-blanco);
+  text-align: center;
+  padding: 80px 40px;
+  border-radius: 10px;
+  margin: 60px 0;
+
+  /* Imagen con filtro marrón */
+  background:
+    linear-gradient(rgba(139, 69, 19, 0.5), rgba(139, 69, 19, 0.5)),
+    url("/static/inmobiliaria/images/living.jpg");
+  background-repeat: no-repeat;     /* evita repetición */
+  background-position: center;      /* centra la imagen */
+  background-size: cover;           /* cubre toda la sección */
+}
+
+
+.cta h2 {
+  font-family: var(--font-titulos);
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--color-beige);
+  color: var(--color-negro);
+  font-family: var(--font-textos);
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: var(--color-oscuro-marron);
+  color: var(--color-blanco);
+}
+/* Novedades Section */
+.novedades {
+  padding: 60px 80px;
+  background: var(--color-beige);
+  text-align: center;
+}
+
+.novedades h2 {
+  font-family: var(--font-titulos);
+  font-size: 2.3rem;
+  margin-bottom: 40px;
+  color: var(--color-negro);
+}
+
+.novedades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.novedad-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.novedad-card h3 {
+  font-family: var(--font-titulos);
+  font-size: 1.2rem;
+  color: var(--color-marron);
+  margin-bottom: 10px;
+}
+
+.novedad-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+/* Responsive */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .valores-grid {
+    grid-template-columns: 1fr;
+  }
+}

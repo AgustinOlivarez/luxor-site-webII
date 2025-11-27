@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'inmobiliaria/css/register.css' %}">
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'inmobiliaria/js/auth.js' %}"></script>
+{% endblock %}
+{% block content %}
+<div class="register-container">
+
+    <h2>Registrarse</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" class="register-form">
+        {% csrf_token %}
+
+        <div class="register-grid">
+            <div>
+                <label>Nombre</label>
+                {{ form.first_name }}
+            </div>
+
+            <div>
+                <label>Apellido</label>
+                {{ form.last_name }}
+            </div>
+        </div>
+
+        <label>Correo electrónico</label>
+        {{ form.email }}
+
+        <label>Contraseña</label>
+        {{ form.password1 }}
+
+        <label>Confirmar contraseña</label>
+        {{ form.password2 }}
+
+        <button type="submit" class="btn-register">Crear cuenta</button>
+    </form>
+
+    <div class="register-login-link mt-4">
+        <a href="{% url 'login' %}">¿Ya tenés cuenta? Iniciar sesión</a>
+    </div>
+
+</div>
+{% endblock %}

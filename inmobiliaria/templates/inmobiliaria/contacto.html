@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Luxor Propiedades{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'inmobiliaria/css/contacto.css' %}">
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'inmobiliaria/js/contacto.js' %}"></script>
+{% endblock %}
+{% block content %}
+<div class="form-container">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+  <div class="contact-wrapper">
+    <!-- Formulario -->
+    <form method="post" class="form-contacto" id="contacto-form">
+      {% csrf_token %}
+      <h2>Contacto</h2>
+      <div class="form-group">
+        {{ form.nombre.label_tag }}
+        {{ form.nombre }}
+      </div>
+
+      <div class="form-group">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </div>
+
+      <div class="form-group">
+        {{ form.fecha.label_tag }}
+        {{ form.fecha }}
+      </div>
+
+      <div class="form-group">
+        {{ form.asunto.label_tag }}
+        {{ form.asunto }}
+      </div>
+
+      <div class="form-group">
+        {{ form.mensaje.label_tag }}
+        {{ form.mensaje }}
+      </div>
+
+      <button type="submit" class="btn-hero" id="btn-enviar">
+        <span id="btn-texto">Enviar</span>
+        <div id="btn-spinner" class="spinner-border spinner-border-sm text-light ms-2"
+             role="status" style="display:none;">
+        </div>
+    </button>
+    </form>
+
+    <!-- Información de contacto -->
+    <div class="contact-info">
+      <h3>Información</h3>
+      <p><i class="bi bi-envelope"></i> contacto@luxorpropiedades.com</p>
+      <p><i class="bi bi-telephone"></i> +54 11 5498-2240</p>
+      <p><i class="bi bi-geo-alt"></i> Av. Libertador 1234, CABA</p>
+
+      <!-- Redes sociales -->
+      <div class="social">
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

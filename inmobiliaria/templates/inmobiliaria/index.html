@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Luxor Propiedades{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'inmobiliaria/css/index.css' %}">
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'inmobiliaria/script.js' %}"></script>
+{% endblock %}
+{% block content %}
+<section class="hero m-5">
+  <div class="hero-text">
+    <h1>Bienvenido a <span>Luxor Propiedades</span></h1>
+    <p>Especialistas en inmuebles premium en las zonas más exclusivas de la ciudad.</p>
+  </div>
+  <div class="hero-img">
+    <img src="{% static 'inmobiliaria/images/prop-lujosa.jpg' %}" alt="Propiedad de lujo">
+  </div>
+</section>
+
+<section class="valores">
+  <h2>Nuestros Valores</h2>
+  <div class="valores-grid">
+    <div class="valor">
+      <img src="{% static 'inmobiliaria/images/confianza.jpg' %}" alt="Confianza">
+      <h3>Confianza</h3>
+      <p>Nos destacamos por ofrecer un servicio transparente y confiable en cada operación.</p>
+    </div>
+    <div class="valor">
+      <img src="{% static 'inmobiliaria/images/elegancia.jpg' %}" alt="Elegancia">
+      <h3>Elegancia</h3>
+      <p>Cuidamos cada detalle para que tu experiencia refleje el lujo y la sofisticación que nos caracteriza.</p>
+    </div>
+    <div class="valor">
+      <img src="{% static 'inmobiliaria/images/profesionalismo.jpg' %}" alt="Profesionalismo">
+      <h3>Profesionalismo</h3>
+      <p>Un equipo altamente calificado dispuesto a acompañarte en cada paso.</p>
+    </div>
+  </div>
+</section>
+<section class="novedades">
+  <h2>Novedades del mercado</h2>
+
+  <div class="novedades-grid">
+    {% for n in novedades %}
+      <div class="novedad-card">
+        <h3>{{ n.titulo|capfirst }}</h3>
+        <p>{{ n.descripcion|truncatechars:120 }}</p>
+      </div>
+    {% empty %}
+      <p>No hay novedades disponibles.</p>
+    {% endfor %}
+  </div>
+</section>
+<section class="cta">
+  <div class="cta-content">
+    <h2>¿Buscás tu próxima propiedad?</h2>
+    <p>En Luxor Propiedades te ofrecemos inmuebles exclusivos con el respaldo de nuestra experiencia y profesionalismo.</p>
+    <a href="{% url 'contacto' %}" class="cta-btn">Agendá una visita</a>
+  </div>
+</section>
+{% endblock %}

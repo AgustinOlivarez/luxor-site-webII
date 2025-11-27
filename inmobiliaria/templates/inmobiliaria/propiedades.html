@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Luxor Propiedades{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'inmobiliaria/css/propiedades.css' %}">
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'inmobiliaria/script.js' %}"></script>
+{% endblock %}
+{% block content %}
+<section class="catalogo">
+  <h2>Encontrá tu futuro hogar</h2>
+  <div class="catalogo-grid">
+    <!-- Propiedad 1 -->
+    <div class="propiedad-card">
+      <img src="{% static 'inmobiliaria/images/prop-lujosa.jpg' %}" alt="Propiedad 1">
+      <div class="propiedad-info">
+        <h3>Departamento de lujo en Recoleta</h3>
+        <p>3 ambientes • 2 baños • 150 m²</p>
+        <p class="precio">$350.000 USD</p>
+        <a href="#" class="btn-ver">Ver más</a>
+      </div>
+    </div>
+
+    <!-- Propiedad 2 -->
+    <div class="propiedad-card">
+      <img src="{% static 'inmobiliaria/images/prop-lujosa.jpg' %}" alt="Propiedad 2">
+      <div class="propiedad-info">
+        <h3>Casa en Palermo</h3>
+        <p>4 ambientes • 3 baños • 250 m²</p>
+        <p class="precio">$480.000 USD</p>
+        <a href="#" class="btn-ver">Ver más</a>
+      </div>
+    </div>
+
+    <!-- Propiedad 3 -->
+    <div class="propiedad-card">
+      <img src="{% static 'inmobiliaria/images/prop-lujosa.jpg' %}" alt="Propiedad 3">
+      <div class="propiedad-info">
+        <h3>Loft moderno en Microcentro</h3>
+        <p>2 ambientes • 1 baño • 100 m²</p>
+        <p class="precio">$220.000 USD</p>
+        <a href="#" class="btn-ver">Ver más</a>
+      </div>
+    </div>
+          <!-- Propiedad 1 -->
+    <div class="propiedad-card">
+      <img src="{% static 'inmobiliaria/images/prop-lujosa.jpg' %}" alt="Propiedad 1">
+      <div class="propiedad-info">
+        <h3>Departamento de lujo en Recoleta</h3>
+        <p>3 ambientes • 2 baños • 150 m²</p>
+        <p class="precio">$350.000 USD</p>
+        <a href="#" class="btn-ver">Ver más</a>
+      </div>
+    </div>
+
+    <!-- Propiedad 2 -->
+    <div class="propiedad-card">
+      <img src="{% static 'inmobiliaria/images/prop-lujosa.jpg' %}" alt="Propiedad 2">
+      <div class="propiedad-info">
+        <h3>Casa en Palermo</h3>
+        <p>4 ambientes • 3 baños • 250 m²</p>
+        <p class="precio">$480.000 USD</p>
+        <a href="#" class="btn-ver">Ver más</a>
+      </div>
+    </div>
+
+    <!-- Propiedad 3 -->
+    <div class="propiedad-card">
+      <img src="{% static 'inmobiliaria/images/prop-lujosa.jpg' %}" alt="Propiedad 3">
+      <div class="propiedad-info">
+        <h3>Loft moderno en Microcentro</h3>
+        <p>2 ambientes • 1 baño • 100 m²</p>
+        <p class="precio">$220.000 USD</p>
+        <a href="#" class="btn-ver">Ver más</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

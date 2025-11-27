@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'inmobiliaria/css/panel.css' %}">
+{% endblock %}
+{% block content %}
+<main class="panel-wrapper">
+
+    <h1>Panel de Administración</h1>
+
+    <div class="header-panel">
+        <span>
+            Bienvenido/a,
+            {{ request.user.first_name|default:request.user.username }}
+        </span>
+
+        <form action="{% url 'logout' %}" method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Cerrar sesión</button>
+        </form>
+    </div>
+
+    <!-- Resumen estadístico -->
+    <div class="stats-box">
+        <h2>Resumen Estadístico</h2>
+        <ul>
+            <li><strong>Total de consultas:</strong> {{ total }}</li>
+            <li><strong>Consultas Comerciales:</strong> {{ comercial }}</li>
+            <li><strong>Consultas Técnicas:</strong> {{ tecnica }}</li>
+            <li><strong>Consultas de RRHH:</strong> {{ rrhh }}</li>
+            <li><strong>Consultas Generales:</strong> {{ general }}</li>
+        </ul>
+    </div>
+
+    <!-- Tabla -->
+    <h2>Consultas recibidas</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Asunto</th>
+                <th>Mensaje</th>
+                <th>Categoría</th>
+                <th>Fecha de envío</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for c in consultas %}
+            <tr>
+                <td>{{ c.id }}</td>
+                <td>{{ c.nombre }}</td>
+                <td>{{ c.email }}</td>
+                <td>{{ c.asunto }}</td>
+                <td>{{ c.mensaje|truncatechars:60 }}</td>
+                <td><strong>{{ c.categoria }}</strong></td>
+                <td>{{ c.fecha_envio|date:"d/m/Y H:i" }}</td>
+
+                <td class="text-center">
+                    <a class="action-btn edit-btn me-2" href="{% url 'editar_consulta' c.id %}">
+                        Editar
+                    </a>
+                    <a class="action-btn delete-btn"
+                       href="{% url 'eliminar_consulta' c.id %}"
+                       onclick="return confirm('¿Eliminar consulta?')">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</main>
+{% endblock %}

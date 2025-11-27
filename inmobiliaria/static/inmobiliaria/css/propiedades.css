@@ -1,0 +1,93 @@
+.catalogo {
+  padding: 70px 8%;
+  background: var(--color-beige);
+}
+
+.catalogo h2 {
+  font-family: var(--font-titulos);
+  font-size: 2.6rem;
+  margin-bottom: 50px;
+  text-align: center;
+  color: var(--color-negro);
+}
+
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 40px;
+}
+
+/* --- CARD --- */
+.propiedad-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 380px; /* más imponente */
+  display: flex;
+  align-items: flex-end; /* info abajo */
+}
+
+.propiedad-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.2);
+}
+
+.propiedad-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* --- INFO SOBRE IMAGEN --- */
+.propiedad-info {
+  position: relative;
+  z-index: 2;
+  background: rgba(34, 34, 36, 0.7); /* negro semitransparente */
+  color: var(--color-blanco);
+  padding: 20px;
+  width: 100%;
+  font-family: var(--font-textos);
+  backdrop-filter: blur(4px); /* toque elegante */
+}
+
+.propiedad-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  font-family: var(--font-titulos);
+}
+
+.propiedad-info p {
+  font-size: 0.95rem;
+  margin: 3px 0;
+  color: var(--gris-medio);
+}
+
+.precio {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-beige);
+  margin-top: 10px;
+}
+
+/* --- BOTÓN --- */
+.btn-ver {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: var(--color-marron);
+  color: var(--color-blanco);
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: var(--font-textos);
+  transition: background 0.3s;
+}
+
+.btn-ver:hover {
+  background: var(--color-oscuro-marron);
+}

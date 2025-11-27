@@ -1,0 +1,23 @@
+{% load static %}
+<footer>
+  <div class="footer-container">
+    <div class="footer-left">
+      <img src="{% static 'images/logo.png' %}" alt="Luxor Logo" class="footer-logo" />
+      <p>© 2025 Luxor Propiedades. Todos los derechos reservados.</p>
+    </div>
+
+    <div class="footer-center">
+      <ul class="footer-menu">
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'propiedades' %}">Propiedades</a></li>
+        <li><a href="{% url 'contacto' %}">Contacto</a></li>
+          <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-right">
+      <p>Tel: +54 11 5498-2240</p>
+      <p>Email: contacto@luxorpropiedades.com</p>
+    </div>
+  </div>
+</footer>
