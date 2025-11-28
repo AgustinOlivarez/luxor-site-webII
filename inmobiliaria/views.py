@@ -83,7 +83,7 @@ def registro(request):
                 permitido = UsuarioPermitido.objects.get(email=email)
             except UsuarioPermitido.DoesNotExist:
                 messages.error(request, "Acceso restringido. No está autorizado a utilizar este sistema.")
-                return render(request, 'auth/registro.html', {'form': form})
+                return render(request, "auth/registro.html", {"form": form})
 
             # Crear usuario desactivado
             usuario = form.save(commit=False)
@@ -97,14 +97,26 @@ def registro(request):
                 f"Hola {usuario.first_name},\n\n"
                 f"Tu código de validación es: {permitido.codigo_validacion}\n\n"
                 f"Validá tu cuenta ingresando aquí:\n"
-                f"http://localhost:8000/validar-cuenta/"
+                f"https://luxor-site-webii.onrender.com/validar-cuenta/"
             )
 
             send_mail(asunto, mensaje, settings.EMAIL_HOST_USER, [email])
 
-            messages.success(request, "Le llegará un correo para validar su cuenta. Ingrese el código para activar su cuenta.")
+            messages.success(
+                request,
+                "Le llegará un correo para validar su cuenta. Ingrese el código para activar su cuenta."
+            )
             return redirect("validar_cuenta")
+
+        else:
+            # ACÁ va el error si el form es inválido
+            messages.error(
+                request,
+                "Error al registrar la cuenta. Verifique los datos ingresados y que las contraseñas coincidan."
+            )
+
     else:
+        # SOLO carga el formulario, SIN mensajes
         form = RegistroForm()
 
     return render(request, "auth/registro.html", {"form": form})

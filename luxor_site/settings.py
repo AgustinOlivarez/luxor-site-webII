@@ -144,8 +144,8 @@ STATICFILES_DIRS = [
 ]
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'c2280296.ferozo.com'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'agustin.olivarez@lalupitacontenidos.site'

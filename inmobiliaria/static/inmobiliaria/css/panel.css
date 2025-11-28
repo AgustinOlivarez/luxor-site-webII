@@ -132,3 +132,21 @@ td:nth-child(5) {
     background: #8a2d1f;
 }
 
+/* Mensajes */
+.alert {
+  padding: 12px;
+  border-radius: 10px;
+  font-family: var(--font-textos);
+  margin-bottom: 20px;
+}
+
+.alert.success {
+  background: var(--color-marron);
+  color: var(--color-blanco);
+}
+
+.alert.error {
+  background: #d88c6a;
+  color: #fff;
+}
+

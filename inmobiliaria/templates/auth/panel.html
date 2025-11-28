@@ -3,6 +3,9 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'inmobiliaria/css/panel.css' %}">
 {% endblock %}
+{% block extra_js %}
+<script src="{% static 'inmobiliaria/js/auth.js' %}"></script>
+{% endblock %}
 {% block content %}
 <main class="panel-wrapper">
 
@@ -19,6 +22,14 @@
             <button type="submit" class="logout-btn">Cerrar sesión</button>
         </form>
     </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
     <!-- Resumen estadístico -->
     <div class="stats-box">
