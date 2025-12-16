@@ -1,7 +1,7 @@
 from django.urls import path
 from . import  views
 from .views import ConsultaListAPIView
-from .views import login_view, logout_view, registro, validar_cuenta, ConsultaListAPIView, panel, editar_consulta, eliminar_consulta
+from .views import login_view, logout_view, registro, validar_cuenta, ConsultaListAPIView, panel, editar_consulta, eliminar_consulta,PasswordResetRequestView,PasswordResetConfirmCustomView
 
 urlpatterns = [
     path('', views.pagina_inicio, name='index'),
@@ -15,4 +15,6 @@ urlpatterns = [
     path('panel', panel, name='panel'),
     path("panel/editar/<int:id>/", editar_consulta, name="editar_consulta"),
     path("panel/eliminar/<int:id>/", eliminar_consulta, name="eliminar_consulta"),
+    path('reset-password/',PasswordResetRequestView.as_view(),name='password_reset'),
+    path('reset/<uidb64>/<token>/',PasswordResetConfirmCustomView.as_view(),name='password_reset_confirm'),
 ]

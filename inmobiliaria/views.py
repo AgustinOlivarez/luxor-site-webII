@@ -3,9 +3,11 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
 from rest_framework import generics
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import views as auth_views
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 from .forms import ContactoForm, RegistroForm
 from .models import Consulta, UsuarioPermitido
 from .utils import clasificar_categoria, obtener_novedades_externas
@@ -231,3 +233,37 @@ def logout_view(request):
 class ConsultaListAPIView(generics.ListAPIView):
     queryset = Consulta.objects.all().order_by('-fecha_envio')
     serializer_class = ConsultaSerializer
+UserModel = get_user_model()
+class PasswordResetRequestView(auth_views.PasswordResetView):
+    template_name = 'auth/password_reset.html'
+    success_url = reverse_lazy('password_reset')
+
+    email_template_name = 'registration/password_reset_email.html'
+    subject_template_name = 'registration/password_reset_subject.txt'
+    html_email_template_name = 'registration/password_reset_email.html'
+
+    def form_valid(self, form):
+        email = form.cleaned_data['email']
+
+        if not UserModel.objects.filter(email=email).exists():
+            messages.error(
+                self.request,
+                'El correo ingresado no se encuentra registrado.'
+            )
+            return self.form_invalid(form)
+
+        messages.success(
+            self.request,
+            'Te enviamos un correo con instrucciones para restablecer tu contraseña.'
+        )
+        return super().form_valid(form)
+class PasswordResetConfirmCustomView(auth_views.PasswordResetConfirmView):
+    template_name = 'auth/password_reset_confirm.html'
+    success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        messages.success(
+            self.request,
+            'Contraseña actualizada correctamente. Ya podés iniciar sesión.'
+        )
+        return super().form_valid(form)
