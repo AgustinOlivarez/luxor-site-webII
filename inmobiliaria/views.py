@@ -9,19 +9,40 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from .forms import ContactoForm, RegistroForm
-from .models import Consulta, UsuarioPermitido
+from .models import Consulta, UsuarioPermitido, HomePage, Valor
 from .utils import clasificar_categoria, obtener_novedades_externas
 from .serializers import ConsultaSerializer
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
 
 # Create your views here.
 def pagina_inicio(request):
     novedades = obtener_novedades_externas()
 
-    context = {
-        "novedades": novedades
+    home, created = HomePage.objects.get_or_create(
+        id=1,
+        defaults={
+            "hero_titulo": "Bienvenido a Luxor Propiedades",
+            "hero_texto": "Especialistas en inmuebles premium en las zonas más exclusivas de la ciudad.",
+            "valores_titulo": "Nuestros Valores"
+        }
+    )
+    IMAGENES_VALORES = {
+        "Confianza": "inmobiliaria/images/confianza.jpg",
+        "Elegancia": "inmobiliaria/images/elegancia.jpg",
+        "Profesionalismo": "inmobiliaria/images/profesionalismo.jpg",
     }
 
-    return render(request, 'inmobiliaria/index.html', context)
+    if created:
+        Valor.objects.create(home=home, titulo="Confianza", descripcion="Servicio transparente y confiable.")
+        Valor.objects.create(home=home, titulo="Elegancia", descripcion="Cuidamos cada detalle de la experiencia.")
+        Valor.objects.create(home=home, titulo="Profesionalismo", descripcion="Equipo altamente calificado.")
+
+    return render(request, 'inmobiliaria/index.html', {
+        "home": home,
+        "novedades": novedades,
+        'imagenes_valores': IMAGENES_VALORES
+    })
 
 def propiedades(request):
     return render(request, 'inmobiliaria/propiedades.html')
@@ -94,15 +115,23 @@ def registro(request):
             usuario.save()
 
             # Enviar mail con código
-            asunto = "Validación de cuenta"
-            mensaje = (
-                f"Hola {usuario.first_name},\n\n"
-                f"Tu código de validación es: {permitido.codigo_validacion}\n\n"
-                f"Validá tu cuenta ingresando aquí:\n"
-                f"https://luxor-site-webii.onrender.com/validar-cuenta/"
+            html_content = render_to_string(
+                "auth/emails/validar_cuenta.html",
+                {
+                    "usuario": usuario,
+                    "codigo": permitido.codigo_validacion,
+                }
             )
 
-            send_mail(asunto, mensaje, settings.EMAIL_HOST_USER, [email])
+            email_message = EmailMultiAlternatives(
+                subject="Validación de cuenta para Luxor Site",
+                body="Tu cliente de correo no soporta HTML.",
+                from_email=settings.EMAIL_HOST_USER,
+                to=[email],
+            )
+
+            email_message.attach_alternative(html_content, "text/html")
+            email_message.send()
 
             messages.success(
                 request,
@@ -267,3 +296,34 @@ class PasswordResetConfirmCustomView(auth_views.PasswordResetConfirmView):
             'Contraseña actualizada correctamente. Ya podés iniciar sesión.'
         )
         return super().form_valid(form)
+@login_required
+def cms_home(request):
+    home = HomePage.objects.prefetch_related('valores').first()
+
+    if not home:
+        messages.error(request, "No se encontró la configuración de la página de inicio.")
+        return redirect('panel')
+
+    if request.method == 'POST':
+        try:
+            home.hero_titulo = request.POST.get('hero_titulo')
+            home.hero_texto = request.POST.get('hero_texto')
+            home.valores_titulo = request.POST.get('valores_titulo')
+            home.save()
+
+            for valor in home.valores.all():
+                valor.titulo = request.POST.get(f'valor_titulo_{valor.id}')
+                valor.descripcion = request.POST.get(f'valor_desc_{valor.id}')
+                valor.save()
+
+            messages.success(request, "Los cambios se guardaron correctamente.")
+
+        except Exception:
+            messages.error(request, "Ocurrió un error al guardar los cambios.")
+
+        return redirect('cms_home')
+
+    return render(request, 'auth/cms_home.html', {
+        'home': home
+    })
+

@@ -1,0 +1,162 @@
+/* ======== CMS CONTENEDOR GENERAL ======== */
+.cms-wrapper {
+    padding: 50px 5%;
+    font-family: var(--font-textos);
+    color: var(--color-negro);
+}
+
+/* ======== HEADER CMS ======== */
+.cms-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-beige);
+    padding: 20px 30px;
+    border-radius: 12px;
+    border: 1px solid var(--gris-medio);
+    margin-bottom: 40px;
+}
+.cms-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.cms-header h1 {
+    font-family: var(--font-titulos);
+    margin: 0;
+}
+
+/* ======== FORM CARD ======== */
+.cms-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--color-blanco);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid var(--gris-medio);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+
+/* ======== SECCIONES ======== */
+.cms-section {
+    margin-bottom: 40px;
+}
+
+.cms-section h2 {
+    font-family: var(--font-titulos);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--color-marron);
+    padding-bottom: 8px;
+}
+
+/* ======== INPUTS ======== */
+.cms-field {
+    margin-bottom: 20px;
+}
+
+.cms-field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--color-marron);
+}
+
+.cms-field input,
+.cms-field textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    font-family: var(--font-textos);
+    transition: 0.3s ease;
+}
+
+.cms-field input:focus,
+.cms-field textarea:focus {
+    outline: none;
+    border-color: var(--color-marron);
+}
+
+/* ======== BLOQUE VALOR ======== */
+.cms-valor {
+    background: var(--color-beige);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 1px solid var(--gris-medio);
+}
+
+.cms-valor h3 {
+    margin-top: 0;
+    font-family: var(--font-titulos);
+}
+
+/* ======== BOTÓN ======== */
+.cms-submit {
+    width: 100%;
+    background: var(--color-marron);
+    color: var(--color-blanco);
+    padding: 16px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-family: var(--font-textos);
+}
+
+.cms-submit:hover {
+    background: var(--color-oscuro-marron);
+    transform: translateY(-2px);
+}
+
+.logout-btn {
+    background: var(--color-marron);
+    color: var(--color-blanco);
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-textos);
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: var(--color-oscuro-marron);
+}
+
+.btn-panel {
+    background-color: #1f2937; /* gris oscuro */
+    color: #ffffff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-panel:hover {
+    background-color: #111827;
+    transform: translateY(-1px);
+}
+/* Mensajes */
+.alert {
+  padding: 12px;
+  border-radius: 10px;
+  font-family: var(--font-textos);
+  margin-bottom: 20px;
+}
+
+.alert.success {
+  background: var(--color-marron);
+  color: var(--color-blanco);
+}
+
+.alert.error {
+  background: #d88c6a;
+  color: #fff;
+}

@@ -34,4 +34,10 @@ El sistema envía mails al cliente informando sobre estas consultas, tambien tie
 username: postgres  
 password: DjangoWeb2
 
-nota: el mail solicitado en la consigna ya se encuentra autorizado para registro.
+nota: el mail solicitado en la consigna ya se encuentra autorizado para registro.   
+
+---
+
+## Testeo de mailing
+
+nota: para testear el mailing de manera LOCAL se deberá descomentar la línea 147 de settings.py (el setting para utilizar SMTP ya que render no lo soporta) y comentar la linea 148 (El mailing por consola), también deberá procurar que la pagina de render esté on para cargar el Logo en los mails

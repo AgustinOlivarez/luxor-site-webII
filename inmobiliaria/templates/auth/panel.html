@@ -11,17 +11,22 @@
 
     <h1>Panel de Administración</h1>
 
-    <div class="header-panel">
-        <span>
-            Bienvenido/a,
-            {{ request.user.first_name|default:request.user.username }}
-        </span>
+<div class="header-panel">
+    <span>
+        Bienvenido/a,
+        {{ request.user.first_name|default:request.user.username }}
+    </span>
+
+    <div class="panel-actions">
+        <a href="/cms/home" class="btn-panel">CMS</a>
 
         <form action="{% url 'logout' %}" method="POST" style="display:inline;">
             {% csrf_token %}
             <button type="submit" class="logout-btn">Cerrar sesión</button>
         </form>
     </div>
+</div>
+
 
     {% if messages %}
         {% for message in messages %}

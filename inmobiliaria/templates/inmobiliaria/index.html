@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load utils %}
 {% block title %}Luxor Propiedades{% endblock %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'inmobiliaria/css/index.css' %}">
@@ -10,8 +11,8 @@
 {% block content %}
 <section class="hero m-5">
   <div class="hero-text">
-    <h1>Bienvenido a <span>Luxor Propiedades</span></h1>
-    <p>Especialistas en inmuebles premium en las zonas más exclusivas de la ciudad.</p>
+    <h1>{{ home.hero_titulo }}</h1>
+    <p>{{ home.hero_texto }}</p>
   </div>
   <div class="hero-img">
     <img src="{% static 'inmobiliaria/images/prop-lujosa.jpg' %}" alt="Propiedad de lujo">
@@ -19,24 +20,23 @@
 </section>
 
 <section class="valores">
-  <h2>Nuestros Valores</h2>
-  <div class="valores-grid">
-    <div class="valor">
-      <img src="{% static 'inmobiliaria/images/confianza.jpg' %}" alt="Confianza">
-      <h3>Confianza</h3>
-      <p>Nos destacamos por ofrecer un servicio transparente y confiable en cada operación.</p>
+  <h2>{{ home.valores_titulo }}</h2>
+
+    <div class="valores-grid">
+      {% for valor in home.valores.all %}
+        <div class="valor">
+          {% with imagen=imagenes_valores|get_item:valor.titulo %}
+            {% if imagen %}
+              <img src="{% static imagen %}" alt="{{ valor.titulo }}">
+            {% endif %}
+          {% endwith %}
+
+          <h3>{{ valor.titulo }}</h3>
+          <p>{{ valor.descripcion }}</p>
+        </div>
+      {% endfor %}
     </div>
-    <div class="valor">
-      <img src="{% static 'inmobiliaria/images/elegancia.jpg' %}" alt="Elegancia">
-      <h3>Elegancia</h3>
-      <p>Cuidamos cada detalle para que tu experiencia refleje el lujo y la sofisticación que nos caracteriza.</p>
-    </div>
-    <div class="valor">
-      <img src="{% static 'inmobiliaria/images/profesionalismo.jpg' %}" alt="Profesionalismo">
-      <h3>Profesionalismo</h3>
-      <p>Un equipo altamente calificado dispuesto a acompañarte en cada paso.</p>
-    </div>
-  </div>
+
 </section>
 <section class="novedades">
   <h2>Novedades del mercado</h2>

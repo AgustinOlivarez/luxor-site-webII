@@ -17,4 +17,6 @@ urlpatterns = [
     path("panel/eliminar/<int:id>/", eliminar_consulta, name="eliminar_consulta"),
     path('reset-password/',PasswordResetRequestView.as_view(),name='password_reset'),
     path('reset/<uidb64>/<token>/',PasswordResetConfirmCustomView.as_view(),name='password_reset_confirm'),
+    path('cms/home/', views.cms_home, name='cms_home'),
+
 ]

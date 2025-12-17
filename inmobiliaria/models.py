@@ -22,3 +22,21 @@ class UsuarioPermitido(models.Model):
 
     def __str__(self):
         return f"{self.nombre} - {self.email}"
+class HomePage(models.Model):
+    hero_titulo = models.CharField(max_length=200)
+    hero_texto = models.TextField()
+    valores_titulo = models.CharField(max_length=200)
+
+    def __str__(self):
+        return "Contenido Home"
+class Valor(models.Model):
+    home = models.ForeignKey(
+        HomePage,
+        related_name='valores',
+        on_delete=models.CASCADE
+    )
+    titulo = models.CharField(max_length=100)
+    descripcion = models.TextField()
+
+    def __str__(self):
+        return self.titulo

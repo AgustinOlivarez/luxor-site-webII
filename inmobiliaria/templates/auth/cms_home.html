@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'inmobiliaria/css/cms.css' %}">
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'inmobiliaria/js/auth.js' %}"></script>
+{% endblock %}
+{% block content %}
+
+<div class="cms-wrapper">
+
+    <div class="cms-header mt-2">
+        <h1>CMS – Página de Inicio</h1>
+
+        <div class="cms-actions">
+            <a href="/panel" class="btn-panel">Panel</a>
+
+            <a href="{% url 'logout' %}">
+                <button class="logout-btn">Cerrar sesión</button>
+            </a>
+        </div>
+    </div>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert {{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+
+  <form method="POST" class="cms-form">
+    {% csrf_token %}
+
+    <!-- HERO -->
+    <div class="cms-section">
+      <h2>Sección Hero</h2>
+
+      <div class="cms-field">
+        <label for="hero_titulo">Título principal</label>
+        <input
+          type="text"
+          id="hero_titulo"
+          name="hero_titulo"
+          value="{{ home.hero_titulo }}"
+          required
+        >
+      </div>
+
+      <div class="cms-field">
+        <label for="hero_texto">Texto descriptivo</label>
+        <textarea
+          id="hero_texto"
+          name="hero_texto"
+          rows="4"
+        >{{ home.hero_texto }}</textarea>
+      </div>
+    </div>
+
+    <!-- VALORES -->
+    <div class="cms-section">
+      <h2>Sección Valores</h2>
+
+      <div class="cms-field">
+        <label for="valores_titulo">Título de la sección</label>
+        <input
+          type="text"
+          id="valores_titulo"
+          name="valores_titulo"
+          value="{{ home.valores_titulo }}"
+          required
+        >
+      </div>
+
+      {% for valor in home.valores.all %}
+        <div class="cms-valor">
+          <h3>Valor {{ forloop.counter }}</h3>
+
+          <div class="cms-field">
+            <label>Título</label>
+            <input
+              type="text"
+              name="valor_titulo_{{ valor.id }}"
+              value="{{ valor.titulo }}"
+              required
+            >
+          </div>
+
+          <div class="cms-field">
+            <label>Descripción</label>
+            <textarea
+              name="valor_desc_{{ valor.id }}"
+              rows="3"
+            >{{ valor.descripcion }}</textarea>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <button type="submit" class="cms-submit">
+      Guardar cambios
+    </button>
+
+  </form>
+
+</div>
+{% endblock %}

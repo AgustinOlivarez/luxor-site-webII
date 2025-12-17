@@ -149,4 +149,24 @@ td:nth-child(5) {
   background: #d88c6a;
   color: #fff;
 }
+.panel-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.btn-panel {
+    background-color: #1f2937; /* gris oscuro */
+    color: #ffffff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-panel:hover {
+    background-color: #111827;
+    transform: translateY(-1px);
+}
 
